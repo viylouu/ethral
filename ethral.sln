@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ethral", "ethral.csproj", "{8791F330-20C7-4406-8643-B8EFD822D9FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8791F330-20C7-4406-8643-B8EFD822D9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8791F330-20C7-4406-8643-B8EFD822D9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8791F330-20C7-4406-8643-B8EFD822D9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8791F330-20C7-4406-8643-B8EFD822D9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C0280E4-0157-4693-8CCB-B8BB8864CACD}
+	EndGlobalSection
+EndGlobal
