@@ -1,7 +1,7 @@
 ﻿partial class thehub {
     static void rend(ICanvas c) {
         if(rendact != null)
-        { updact(); rendact(c); return; }
+        { updact(); if(rendact != null) { rendact(c); } return; }
 
         c.Fill(bggrad);
         c.DrawRect(0, 0, Window.Width, Window.Height);
