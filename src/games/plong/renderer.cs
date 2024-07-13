@@ -13,5 +13,8 @@
         c.FontSize(12);
         c.DrawText(lscore + "", new Vector2(16, 8), Alignment.Center);
         c.DrawText(rscore + "", new Vector2(144, 8), Alignment.Center);
+
+        if (menuOpen)
+            c.DrawLine(ballpos, ballpos+ballvel*4);
     }
 }

@@ -17,5 +17,9 @@
         hitOut.Init(hitSound); scoreOut.Init(scoreSound);
 
         menuOpen = false;
+
+        if (songOut.PlaybackState != PlaybackState.Stopped) { songOut.Stop(); }
+        songOut.Init(songStream);
+        songOut.Play();
     }
 }

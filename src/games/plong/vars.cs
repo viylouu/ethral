@@ -7,5 +7,8 @@
     static WaveStream hitSound = new WaveFileReader(@"assets\plong\hit.wav"), scoreSound = new WaveFileReader(@"assets\plong\score.wav");
     static WaveOutEvent hitOut = new WaveOutEvent(), scoreOut = new WaveOutEvent();
 
+    static LoopStream songStream = new LoopStream(new WaveFileReader(@"assets\plong\song.wav"));
+    static WaveOutEvent songOut = new WaveOutEvent();
+
     static bool menuOpen;
 }

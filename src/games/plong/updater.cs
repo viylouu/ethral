@@ -67,7 +67,7 @@
             ImGui.Begin("menu");
 
             if (ImGui.Button("close"))
-            { thehub.rendact = null; Window.Resize(0, 0); }
+            { thehub.rendact = null; Window.Resize(0, 0); songOut.Stop(); }
 
             ImGui.End();
         }
