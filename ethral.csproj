@@ -17,6 +17,9 @@
     <None Update="assets\floopy burd\burd.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="assets\floopy burd\pip.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="assets\hub\palette.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
