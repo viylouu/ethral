@@ -1,8 +1,10 @@
 ﻿partial class thehub {
     static gamebut plong_g = new gamebut { name = "plong", init = plong.init, rend = plong.rend, update = plong.update };
+    static gamebut floopy_burd_g = new gamebut { name = "floopy burd", init = floopy_burd.init, rend = floopy_burd.rend, update = floopy_burd.update };
 
     static gamebut[] games = { 
-        plong_g
+        plong_g,
+        floopy_burd_g,
     };
 
     static Color bgcol_dark, bgcol_light, butcol_dark, butcol_light, textcol;
