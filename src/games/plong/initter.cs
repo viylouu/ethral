@@ -15,5 +15,7 @@
         hitOut = new WaveOutEvent(); scoreOut = new WaveOutEvent();
 
         hitOut.Init(hitSound); scoreOut.Init(scoreSound);
+
+        menuOpen = false;
     }
 }

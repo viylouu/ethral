@@ -21,6 +21,6 @@
 
     static Rectangle but;
 
-    static Action<ICanvas> rendact;
+    public static Action<ICanvas> rendact;
     static Action updact;
 }

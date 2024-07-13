@@ -57,5 +57,17 @@
                 scorePS();
             }
         }
+
+        if (Keyboard.IsKeyPressed(Key.Esc))
+            menuOpen = !menuOpen;
+
+        if (menuOpen) {
+            ImGui.Begin("menu");
+
+            if (ImGui.Button("close"))
+                thehub.rendact = null;
+
+            ImGui.End();
+        }
     }
 }
