@@ -34,7 +34,7 @@
             if (!lost)
                 for (int i = 0; i < pipes.Count; i++)
                     if (pipes[i].Item1.X > 72-18 && pipes[i].Item1.X < 80+8)
-                        if(birdy > pipes[i].Item1.Y + 48 || birdy < pipes[i].Item1.Y - 48)
+                        if(birdy > pipes[i].Item1.Y + 30 || birdy < pipes[i].Item1.Y - 30)
                         { losePS(); lost = true; birdvel = 256; }
 
             if (!lost)
