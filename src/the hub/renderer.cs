@@ -13,6 +13,7 @@
         but_shad = Window.Height / 32;
         but_ts = Window.Height / 24;
         but_tshad = Window.Height / 128;
+        but_hamt = m.max(Window.Width, Window.Height) / 96;
 
         for (int i = 0; i < games.Length; i++) {
             but_y = Window.Height/2+(i-games.Length/2)*Window.Height/10;
