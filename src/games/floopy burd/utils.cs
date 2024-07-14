@@ -29,7 +29,7 @@
 
     static void stopsongs() {
         for (int i = 0; i < songs.Length; i++)
-            if (songs[i].Item2.PlaybackState == PlaybackState.Stopped)
+            if (songs[i].Item2.PlaybackState != PlaybackState.Stopped)
             { songs[i].Item2.Stop(); }
     }
 }
