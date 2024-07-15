@@ -37,12 +37,21 @@
               ssY = tossY(gates[i].pos.Y),
               ssS = 16 / zoom;
 
+        if (gates[i].in1.get() == null)
+            gates[i].in1 = -1;
+        if (gates[i].in2.get() == null)
+            gates[i].in2 = -1;
+        if (gates[i].out1.get() == null)
+            gates[i].out1 = -1;
+        if (gates[i].out2.get() == null)
+            gates[i].out2 = -1;
+
         if (Mouse.Position.X > ssX-ssS/2 && Mouse.Position.X < ssX+ssS/2 && Mouse.Position.Y > ssY-ssS/2 && Mouse.Position.Y < ssY+ssS/2) {
             if (Mouse.IsButtonPressed(MouseButton.Left))
             { gates[i].dragged = true; nodegrabPS(); }
              
             if (Mouse.IsButtonPressed(MouseButton.Right))
-            { gates.RemoveAt(i); nodedelPS(); decreaseamt++; return; }
+            { gates.RemoveAt(i); nodedelPS(); decreaseamt++; i--; return; }
 
             if (Mouse.IsButtonPressed(MouseButton.Middle))
             { gates[i].on = !gates[i].on; inptogglePS(); }

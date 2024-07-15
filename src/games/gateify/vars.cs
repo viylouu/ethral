@@ -7,7 +7,7 @@
 }
 
 public static class nodeext {
-    public static node get(this int i) { if (i == -1) { return null; } return gateify.gates[i]; }
+    public static node get(this int i) { if (i == -1 || i >= gateify.gates.Count) { return null; } return gateify.gates[i]; }
 }
 
 partial class gateify {
