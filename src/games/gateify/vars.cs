@@ -1,13 +1,17 @@
-﻿partial class gateify {
-    class node {
-        public byte gate;
-        public Vector2 pos;
-        public bool on;
-        public bool dragged;
-        public node in1, in2, out1, out2;
-    }
+﻿public class node {
+    public byte gate;
+    public Vector2 pos;
+    public bool on;
+    public bool dragged;
+    public int in1, in2, out1, out2;
+}
 
-    static List<node> gates = new List<node>();
+public static class nodeext {
+    public static node get(this int i) => gateify.gates[i];
+}
+
+partial class gateify {
+    public static List<node> gates = new List<node>();
 
     static ITexture gatespr, dot, dotemp;
 
@@ -45,4 +49,4 @@
     static string[] savefiles;
     static int imguisfsel;
     static string savename = "";
-} 
+}

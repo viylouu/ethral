@@ -83,46 +83,46 @@
                 if (Mouse.Position.X > ssX-ssS/1.25f && Mouse.Position.X < ssX+ssS/1.25f && Mouse.Position.Y > ssY-ssS/1.25f && Mouse.Position.Y < ssY+ssS/1.25f) {
                     if (wireio >= 2 && (gates[i].gate >= 8 || gates[i].gate <= 1) && gates[i].gate != 10)
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), ssY)) < 2/zoom) { 
-                            gates[i].in1 = gates[wireI];
-                            if (wireio == 2) { gates[wireI].out1 = gates[i]; }
-                            else { gates[wireI].out2 = gates[i]; }
+                            gates[i].in1 = wireI;
+                            if (wireio == 2) { gates[wireI].out1 = i; }
+                            else { gates[wireI].out2 = i; }
                             wireendPS();
                         }
 
                     if (wireio >= 2 && gates[i].gate < 8 && gates[i].gate > 1) {
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f))) < 2/zoom) { 
-                            gates[i].in1 = gates[wireI];
-                            if (wireio == 2) { gates[wireI].out1 = gates[i]; }
-                            else { gates[wireI].out2 = gates[i]; }
+                            gates[i].in1 = wireI;
+                            if (wireio == 2) { gates[wireI].out1 = i; }
+                            else { gates[wireI].out2 = i; }
                             wireendPS();
                         }
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom) { 
-                            gates[i].in2 = gates[wireI];
-                            if (wireio == 2) { gates[wireI].out1 = gates[i]; }
-                            else { gates[wireI].out2 = gates[i]; }
+                            gates[i].in2 = wireI;
+                            if (wireio == 2) { gates[wireI].out1 = i; }
+                            else { gates[wireI].out2 = i; }
                             wireendPS();
                         }
                     }
 
                     if (wireio <= 1 && gates[i].gate != 8 && gates[i].gate != 11)
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), ssY)) < 2/zoom) { 
-                            gates[i].out1 = gates[wireI];
-                            if (wireio == 0) { gates[wireI].in1 = gates[i]; }
-                            else { gates[wireI].in2 = gates[i]; }
+                            gates[i].out1 = wireI;
+                            if (wireio == 0) { gates[wireI].in1 = i; }
+                            else { gates[wireI].in2 = i; }
                             wireendPS();
                         }
 
                     if (wireio <= 1 && gates[i].gate == 8) {
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y - .25f))) < 2/zoom) { 
-                            gates[i].out1 = gates[wireI];
-                            if (wireio == 0) { gates[wireI].in1 = gates[i]; }
-                            else { gates[wireI].in2 = gates[i]; }
+                            gates[i].out1 = wireI;
+                            if (wireio == 0) { gates[wireI].in1 = i; }
+                            else { gates[wireI].in2 = i; }
                             wireendPS();
                         }
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom) { 
-                            gates[i].out2 = gates[wireI];
-                            if (wireio == 0) { gates[wireI].in1 = gates[i]; }
-                            else { gates[wireI].in2 = gates[i]; }
+                            gates[i].out2 = wireI;
+                            if (wireio == 0) { gates[wireI].in1 = i; }
+                            else { gates[wireI].in2 = i; }
                             wireendPS();
                         }
                     }
@@ -151,36 +151,36 @@
     static void updnodestate(int i) { 
         switch (gates[i].gate) {
             case 0 or 8 or 9 or 11:
-                if (gates[i].in1 != null)
-                    gates[i].on = gates[i].in1.on;
+                if (gates[i].in1.get() != null)
+                    gates[i].on = gates[i].in1.get().on;
                 break;
             case 1:
-                if (gates[i].in1 != null)
-                    gates[i].on = !gates[i].in1.on;
+                if (gates[i].in1.get() != null)
+                    gates[i].on = !gates[i].in1.get().on;
                 break;
             case 2:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on & gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on & gates[i].in2.get().on;
                 break;
             case 3:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on !& gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on !& gates[i].in2.get().on;
                 break;
             case 4:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on | gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on | gates[i].in2.get().on;
                 break;
             case 5:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on !| gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on !| gates[i].in2.get().on;
                 break;
             case 6:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on ^ gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on ^ gates[i].in2.get().on;
                 break;
             case 7:
-                if (gates[i].in1 != null && gates[i].in2 != null)
-                    gates[i].on = gates[i].in1.on !^ gates[i].in2.on;
+                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                    gates[i].on = gates[i].in1.get().on !^ gates[i].in2.get().on;
                 break;
         }
     }

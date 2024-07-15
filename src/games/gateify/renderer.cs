@@ -103,34 +103,34 @@ partial class gateify {
             c.DrawTexture(sel==3?dotemp:dot, tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y + .25f), 4 / zoom, 4 / zoom, Alignment.Center);
         }
 
-        if ((gates[i].gate >= 8 || gates[i].gate <= 1) && gates[i].gate != 10 && gates[i].in1!=null) {
-            if (gates[i].in1.gate == 8) {
-                if (gates[i].in1.out1 == gates[i])
-                    c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y - .25f));
+        if ((gates[i].gate >= 8 || gates[i].gate <= 1) && gates[i].gate != 10 && gates[i].in1.get() != null) {
+            if (gates[i].in1.get().gate == 8) {
+                if (gates[i].in1.get().out1 == i)
+                    c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y - .25f));
                 else
-                    c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y + .25f));
+                    c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y + .25f));
             } else
-                c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y));
+                c.DrawLine(tossX(gates[i].pos.X - .45f), ssY, tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y));
         }
 
         if (gates[i].gate < 8 && gates[i].gate > 1) {
-            if (gates[i].in1 != null) { 
-                if (gates[i].in1.gate == 8) {
-                    if (gates[i].in1.out1 == gates[i])
-                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y - .25f));
+            if (gates[i].in1.get() != null) { 
+                if (gates[i].in1.get().gate == 8) {
+                    if (gates[i].in1.get().out1 == i)
+                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y - .25f));
                     else
-                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y + .25f));
+                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y + .25f));
                 } else
-                    c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.pos.X + .45f), tossY(gates[i].in1.pos.Y));
+                    c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f), tossX(gates[i].in1.get().pos.X + .45f), tossY(gates[i].in1.get().pos.Y));
             }
-            if (gates[i].in2 != null) { 
-                if (gates[i].in2.gate == 8) {
-                    if (gates[i].in2.out1 == gates[i])
-                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.pos.X + .45f), tossY(gates[i].in2.pos.Y - .25f));
+            if (gates[i].in2.get() != null) { 
+                if (gates[i].in2.get().gate == 8) {
+                    if (gates[i].in2.get().out1 == i)
+                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.get().pos.X + .45f), tossY(gates[i].in2.get().pos.Y - .25f));
                     else
-                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.pos.X + .45f), tossY(gates[i].in2.pos.Y + .25f));
+                        c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.get().pos.X + .45f), tossY(gates[i].in2.get().pos.Y + .25f));
                 } else
-                    c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.pos.X + .45f), tossY(gates[i].in2.pos.Y));
+                    c.DrawLine(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f), tossX(gates[i].in2.get().pos.X + .45f), tossY(gates[i].in2.get().pos.Y));
             }
         }
 
