@@ -25,5 +25,13 @@
 
             songs[i].Item2.Init(songs[i].Item1);
         }
+
+        if (!Path.Exists(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\"))
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\");
+
+        savefiles = new string[Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\", "*.json").Length];
+
+        for (int i = 0; i < savefiles.Length; i++)
+            savefiles[i] = Path.GetFileNameWithoutExtension(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\", "*.json")[i]);
     }
 }

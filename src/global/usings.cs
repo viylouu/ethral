@@ -5,3 +5,4 @@ global using SimulationFramework.Desktop;
 global using System.Numerics;
 global using NAudio.Wave;
 global using ImGuiNET;
+global using Newtonsoft.Json;

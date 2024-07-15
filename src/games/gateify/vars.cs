@@ -7,18 +7,6 @@
         public node in1, in2, out1, out2;
     }
 
-    enum gate {
-        buff,
-        not,
-        and,
-        nand,
-        or,
-        nor,
-        xor,
-        xnor,
-        disp
-    }
-
     static List<node> gates = new List<node>();
 
     static ITexture gatespr, dot, dotemp;
@@ -53,4 +41,8 @@
 
     static (WaveStream, WaveOutEvent, string)[] songs;
     static int songplayed;
+
+    static string[] savefiles;
+    static int imguisfsel;
+    static string savename;
 } 
