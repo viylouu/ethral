@@ -44,5 +44,5 @@
 
     static string[] savefiles;
     static int imguisfsel;
-    static string savename;
+    static string savename = "";
 } 

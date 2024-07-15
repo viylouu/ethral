@@ -9,25 +9,26 @@
                 savefiles[i] = Path.GetFileNameWithoutExtension(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\", "*.json")[i]);
         }
 
-        ImGui.ListBox("saves", ref imguisfsel, savefiles, savefiles.Length);
+        if(savefiles.Length > 0)
+            ImGui.ListBox("saves", ref imguisfsel, savefiles, savefiles.Length);
+        else
+            ImGui.Text("you have no saves");
 
         if (ImGui.Button("load")) {
             string filedata;
 
-            using (StreamReader sr = new StreamReader(@$"assets\savedata\gateify\{savefiles[imguisfsel]}.json"))
+            using (StreamReader sr = new StreamReader(@"assets\savedata\gateify\"+savefiles[imguisfsel]+".json"))
                 filedata = sr.ReadToEnd();
 
             gates = JsonConvert.DeserializeObject<List<node>>(filedata);
         }
-
-        ImGui.NewLine();
 
         ImGui.InputText("save name", ref savename, 100);
 
         if (ImGui.Button("save")) {
             string data = JsonConvert.SerializeObject(gates);
 
-            using (StreamWriter sw = new StreamWriter(@$"assets\savedata\gateify\{savename}.json"))
+            using (StreamWriter sw = new StreamWriter(@"assets\savedata\gateify\"+savename+".json"))
                 sw.Write(data);
         }
 
