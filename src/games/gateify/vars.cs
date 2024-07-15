@@ -3,11 +3,11 @@
     public Vector2 pos;
     public bool on;
     public bool dragged;
-    public int in1, in2, out1, out2;
+    public int in1=-1, in2=-1, out1=-1, out2=-1;
 }
 
 public static class nodeext {
-    public static node get(this int i) => gateify.gates[i];
+    public static node get(this int i) { if (i == -1) { return null; } return gateify.gates[i]; }
 }
 
 partial class gateify {
@@ -49,4 +49,6 @@ partial class gateify {
     static string[] savefiles;
     static int imguisfsel;
     static string savename = "";
+
+    static int decreaseamt = 0;
 }

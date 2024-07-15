@@ -14,6 +14,8 @@ partial class gateify {
 
         c.Fill(Color.White);
 
+        decreaseamt = 0;
+
         for (int i = 0; i < gates.Count; i++)
             drawgate(c, i);
 
@@ -60,6 +62,15 @@ partial class gateify {
             ), 
             new Rectangle(ssX, ssY, ssS, ssS, Alignment.Center)
         );
+
+        if (gates[i].in1 != -1)
+            gates[i].in1 -= decreaseamt;
+        if (gates[i].in2 != -1)
+            gates[i].in2 -= decreaseamt;
+        if (gates[i].out1 != -1)
+            gates[i].out1 -= decreaseamt;
+        if (gates[i].out2 != -1)
+            gates[i].out2 -= decreaseamt;
 
         int sel = -1;
 

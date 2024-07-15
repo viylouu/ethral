@@ -42,7 +42,7 @@
             { gates[i].dragged = true; nodegrabPS(); }
              
             if (Mouse.IsButtonPressed(MouseButton.Right))
-            { gates.RemoveAt(i); nodedelPS(); return; }
+            { gates.RemoveAt(i); nodedelPS(); decreaseamt++; return; }
 
             if (Mouse.IsButtonPressed(MouseButton.Middle))
             { gates[i].on = !gates[i].on; inptogglePS(); }
