@@ -28,6 +28,8 @@
 
             ImGui.End();
         }
+
+        salImgui();
     }
 
     static void updnode(ref int i) {
@@ -144,8 +146,6 @@
 
             PS(songplayed);
         }
-
-        salImgui();
     }
 
     static void updnodestate(int i) { 
