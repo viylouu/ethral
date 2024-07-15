@@ -32,4 +32,22 @@
 
     static bool wiring, wire2b, wire2f;
     static int wireI, wireio;
+
+    static bool menuOpen;
+
+    static WaveStream inptoggle = new WaveFileReader(@"assets\gateify\inputtoggle.wav"),
+                      nodecrt = new WaveFileReader(@"assets\gateify\nodecreate.wav"),
+                      nodedel = new WaveFileReader(@"assets\gateify\nodedelete.wav"),
+                      nodegrab = new WaveFileReader(@"assets\gateify\nodegrab.wav"),
+                      nodeplace = new WaveFileReader(@"assets\gateify\nodeplace.wav"),
+                      wireend = new WaveFileReader(@"assets\gateify\wireend.wav"),
+                      wirestart = new WaveFileReader(@"assets\gateify\wirestart.wav");
+
+    static WaveOutEvent inptoggleO = new WaveOutEvent(),
+                        nodecrtO = new WaveOutEvent(),
+                        nodedelO = new WaveOutEvent(),
+                        nodegrabO = new WaveOutEvent(),
+                        nodeplaceO = new WaveOutEvent(),
+                        wireendO = new WaveOutEvent(),
+                        wirestartO = new WaveOutEvent();
 } 

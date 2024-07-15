@@ -25,11 +25,11 @@
         if (songs != null)
             stopsongs();
 
-        songs = new (WaveStream, WaveOutEvent, string)[Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\floopy burd\music\", "*.wav").Length];
+        songs = new (WaveStream, WaveOutEvent, string)[Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\ambient\music\", "*.wav").Length];
 
         for (int i = 0; i < songs.Length; i++) {
-            WaveStream stream = new WaveFileReader(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\floopy burd\music\", "*.wav")[i]);
-            string name = Path.GetFileName(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\floopy burd\music\", "*.wav")[i]);
+            WaveStream stream = new WaveFileReader(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\ambient\music\", "*.wav")[i]);
+            string name = Path.GetFileName(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\ambient\music\", "*.wav")[i]);
 
             songs[i] = (stream, new WaveOutEvent(), name);
 

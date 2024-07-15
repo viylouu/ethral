@@ -13,9 +13,21 @@
         ImGui.InputInt("pos y", ref placeY);
 
         if (ImGui.Button("add"))
-            gates.Add(new node { gate = (byte)curselgate, on = false, pos = new Vector2(placeX, placeY) });
+        { gates.Add(new node { gate = (byte)curselgate, on = false, pos = new Vector2(placeX, placeY) }); nodecrtPS(); }
 
         ImGui.End();
+
+        if (Keyboard.IsKeyPressed(Key.Esc))
+            menuOpen = !menuOpen;
+
+        if (menuOpen) {
+            ImGui.Begin("menu");
+
+            if (ImGui.Button("close"))
+            { thehub.rendact = null; Window.Resize(0, 0); Window.Title = "ethral: hub"; }
+
+            ImGui.End();
+        }
     }
 
     static void updnode(ref int i) {
@@ -25,41 +37,44 @@
 
         if (Mouse.Position.X > ssX-ssS/2 && Mouse.Position.X < ssX+ssS/2 && Mouse.Position.Y > ssY-ssS/2 && Mouse.Position.Y < ssY+ssS/2) {
             if (Mouse.IsButtonPressed(MouseButton.Left))
-                gates[i].dragged = true;
+            { gates[i].dragged = true; nodegrabPS(); }
              
-            if (Mouse.IsButtonPressed(MouseButton.Middle))
-            { gates.RemoveAt(i); return; }
-
             if (Mouse.IsButtonPressed(MouseButton.Right))
-                gates[i].on = !gates[i].on;
+            { gates.RemoveAt(i); nodedelPS(); return; }
+
+            if (Mouse.IsButtonPressed(MouseButton.Middle))
+            { gates[i].on = !gates[i].on; inptogglePS(); }
         }
 
         if (Mouse.IsButtonPressed(MouseButton.Left))
             if (Mouse.Position.X > ssX-ssS/1.25f && Mouse.Position.X < ssX+ssS/1.25f && Mouse.Position.Y > ssY-ssS/1.25f && Mouse.Position.Y < ssY+ssS/1.25f) {
                 if ((gates[i].gate >= 8 || gates[i].gate <= 1) && gates[i].gate != 10)
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), ssY)) < 2/zoom)
-                    { wiring = true; wireI = i; wireio = 0; wire2b = false; }
+                    { wiring = true; wireI = i; wireio = 0; wire2b = false; wirestartPS(); }
 
                 if (gates[i].gate < 8 && gates[i].gate > 1) {
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y - .25f))) < 2/zoom)
-                    { wiring = true; wireI = i; wireio = 0; wire2b = true; }
+                    { wiring = true; wireI = i; wireio = 0; wire2b = true; wirestartPS(); }
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom)
-                    { wiring = true; wireI = i; wireio = 1; wire2b = true; }
+                    { wiring = true; wireI = i; wireio = 1; wire2b = true; wirestartPS(); }
                 }
 
                 if (gates[i].gate != 8 && gates[i].gate != 11)
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), ssY)) < 4/zoom)
-                    { wiring = true; wireI = i; wireio = 2; wire2f = false; }
+                    { wiring = true; wireI = i; wireio = 2; wire2f = false; wirestartPS(); }
 
                 if (gates[i].gate == 8) {
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y - .25f))) < 2/zoom)
-                    { wiring = true; wireI = i; wireio = 2; wire2f = true; }
+                    { wiring = true; wireI = i; wireio = 2; wire2f = true; wirestartPS(); }
                     if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom)
-                    { wiring = true; wireI = i; wireio = 3; wire2f = true; }
+                    { wiring = true; wireI = i; wireio = 3; wire2f = true; wirestartPS(); }
                 }
             }
 
         if (!Mouse.IsButtonDown(MouseButton.Left)) {
+            if (gates[i].dragged)
+                nodeplacePS();
+
             gates[i].dragged = false;
 
             if(wiring)
@@ -69,6 +84,7 @@
                             gates[i].in1 = gates[wireI];
                             if (wireio == 2) { gates[wireI].out1 = gates[i]; }
                             else { gates[wireI].out2 = gates[i]; }
+                            wireendPS();
                         }
 
                     if (wireio >= 2 && gates[i].gate < 8 && gates[i].gate > 1) {
@@ -76,11 +92,13 @@
                             gates[i].in1 = gates[wireI];
                             if (wireio == 2) { gates[wireI].out1 = gates[i]; }
                             else { gates[wireI].out2 = gates[i]; }
+                            wireendPS();
                         }
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X - .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom) { 
                             gates[i].in2 = gates[wireI];
                             if (wireio == 2) { gates[wireI].out1 = gates[i]; }
                             else { gates[wireI].out2 = gates[i]; }
+                            wireendPS();
                         }
                     }
 
@@ -89,6 +107,7 @@
                             gates[i].out1 = gates[wireI];
                             if (wireio == 0) { gates[wireI].in1 = gates[i]; }
                             else { gates[wireI].in2 = gates[i]; }
+                            wireendPS();
                         }
 
                     if (wireio <= 1 && gates[i].gate == 8) {
@@ -96,11 +115,13 @@
                             gates[i].out1 = gates[wireI];
                             if (wireio == 0) { gates[wireI].in1 = gates[i]; }
                             else { gates[wireI].in2 = gates[i]; }
+                            wireendPS();
                         }
                         if (m.dist(Mouse.Position, new Vector2(tossX(gates[i].pos.X + .45f), tossY(gates[i].pos.Y + .25f))) < 2/zoom) { 
                             gates[i].out2 = gates[wireI];
                             if (wireio == 0) { gates[wireI].in1 = gates[i]; }
                             else { gates[wireI].in2 = gates[i]; }
+                            wireendPS();
                         }
                     }
                 }
