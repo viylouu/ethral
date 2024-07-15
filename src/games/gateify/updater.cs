@@ -144,6 +144,8 @@
 
             PS(songplayed);
         }
+
+        salImgui();
     }
 
     static void updnodestate(int i) { 
