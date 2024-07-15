@@ -24,9 +24,24 @@
 
         c.Fill(Color.White);
         c.Antialias(false);
+
+        for (int i = 0; i < rain.Count; i++) {
+            c.DrawLine(rain[i]-Vector2.UnitY*4, rain[i]+Vector2.UnitY*4);
+
+            if(!menuOpen) {
+                rain[i] += Vector2.UnitY * 1024 * Time.DeltaTime;
+                if(go)
+                    rain[i] -= Vector2.UnitX * 256 * Time.DeltaTime;
+
+                if (rain[i].Y - 4 > 240)
+                { rain.RemoveAt(i); i--; }
+            }
+        }
+
         c.FontSize(12);
         c.DrawText(score + "", new Vector2(160, 8), Alignment.Center);
         c.DrawText(songs[songplayed].Item3, new Vector2(3, 237), Alignment.BottomLeft);
+
         if(lost)
             c.DrawText("game over", new Vector2(160, 120), Alignment.Center);
     }

@@ -39,5 +39,9 @@
         score = 0;
 
         lost = false;
+
+        raincrtcounter = 0;
+
+        rain = new List<Vector2>();
     }
 }

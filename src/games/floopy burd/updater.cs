@@ -10,6 +10,14 @@
                 pipes.Add((new Vector2(320, m.rand(120-60, 120+60)), false));
             }
 
+            raincrtcounter -= Time.DeltaTime;
+
+            if (raincrtcounter <= 0) { 
+                raincrtcounter = raincrtdelay;
+
+                rain.Add(new Vector2(m.rand(0, 320), -4));
+            }
+
             if (Keyboard.IsKeyPressed(Key.Space) || Mouse.IsButtonPressed(MouseButton.Left)) {
                 go = true;
                 birdvel = 164;

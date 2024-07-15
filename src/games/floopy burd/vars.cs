@@ -27,4 +27,8 @@
     static bool lost;
 
     static bool menuOpen;
+
+    static List<Vector2> rain;
+    static float raincrtdelay = 1f / 48;
+    static float raincrtcounter = 0;
 }
