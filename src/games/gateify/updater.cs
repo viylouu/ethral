@@ -24,7 +24,7 @@
             ImGui.Begin("menu");
 
             if (ImGui.Button("close"))
-            { thehub.rendact = null; Window.Resize(0, 0); Window.Title = "ethral: hub"; }
+            { thehub.rendact = null; Window.Resize(0, 0); stopsongs(); Window.Title = "ethral: hub"; }
 
             ImGui.End();
         }
