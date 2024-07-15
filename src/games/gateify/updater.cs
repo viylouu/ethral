@@ -134,6 +134,16 @@
         }
 
         updnodestate(i);
+
+        if (songs[songplayed].Item2.PlaybackState == PlaybackState.Stopped) {
+            int prev = songplayed;
+
+            do
+                songplayed = (int)m.clmp(m.rand(0, songs.Length), 0, songs.Length - 1);
+            while (songs.Length==1?false:songplayed==prev);
+
+            PS(songplayed);
+        }
     }
 
     static void updnodestate(int i) { 

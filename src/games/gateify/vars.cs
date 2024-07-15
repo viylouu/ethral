@@ -50,4 +50,7 @@
                         nodeplaceO = new WaveOutEvent(),
                         wireendO = new WaveOutEvent(),
                         wirestartO = new WaveOutEvent();
+
+    static (WaveStream, WaveOutEvent, string)[] songs;
+    static int songplayed;
 } 

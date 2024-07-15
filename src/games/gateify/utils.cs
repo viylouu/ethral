@@ -51,4 +51,17 @@
         wirestartO.Init(wirestart);
         wirestartO.Play();
     }
+
+    static void PS(int i) {
+        if (songs[i].Item2.PlaybackState is PlaybackState.Playing) { songs[i].Item2.Stop(); }
+        songs[i].Item1.CurrentTime = new TimeSpan(0L);
+        songs[i].Item2.Init(songs[i].Item1);
+        songs[i].Item2.Play();
+    }
+
+    static void stopsongs() {
+        for (int i = 0; i < songs.Length; i++)
+            if (songs[i].Item2.PlaybackState != PlaybackState.Stopped)
+            { songs[i].Item2.Stop(); }
+    }
 }
