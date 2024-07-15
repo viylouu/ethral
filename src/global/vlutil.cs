@@ -68,7 +68,7 @@
 
     //geometry
     public static float dist(float a, float b) => abs(a - b);
-    public static float dist(Vector2 a, Vector2 b) => abs(sqrt(sqr(b.X - a.X) + sqr(b.Y - a.Y)));
+    public static float dist(Vector2 a, Vector2 b) => sqrt(sqr(b.X - a.X) + sqr(b.Y - a.Y));
     public static float dirb(Vector2 a, Vector2 b) => atan2(b.Y - a.Y, b.X - a.X);
 
     public static Vector3 eul2vec(float pitch, float yaw) => new Vector3(cos(d2r(pitch)) * cos(d2r(yaw)), cos(d2r(pitch)) * sin(d2r(yaw)), sin(d2r(pitch)));
