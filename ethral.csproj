@@ -35,6 +35,12 @@
     <None Update="assets\floopy burd\point.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="assets\gateify\dot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\gateify\dot_empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="assets\gateify\gates.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

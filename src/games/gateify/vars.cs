@@ -4,6 +4,7 @@
         public Vector2 pos;
         public bool on;
         public bool dragged;
+        public node in1, in2, out1, out2;
     }
 
     enum gate {
@@ -20,7 +21,7 @@
 
     static List<node> gates = new List<node>();
 
-    static ITexture gatespr;
+    static ITexture gatespr, dot, dotemp;
 
     static Vector2 cam;
     static float zoom = 1;
@@ -28,4 +29,7 @@
     static int curselgate;
     static string[] gateenum = { "buffer", "not", "and", "nand", "or", "nor", "xor", "xnor", "splitter", "continuer", "input", "output" };
     static int placeX,placeY;
+
+    static bool wiring, wire2b, wire2f;
+    static int wireI, wireio;
 } 
