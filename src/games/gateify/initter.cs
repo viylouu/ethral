@@ -9,5 +9,7 @@
         dotemp = Graphics.LoadTexture(@"assets\gateify\dot_empty.png");
 
         gates = new List<node>();
+
+        menuOpen = false;
     }
 }

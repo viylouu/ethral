@@ -43,5 +43,7 @@
         raincrtcounter = 0;
 
         rain = new List<Vector2>();
+
+        menuOpen = false;
     }
 }
