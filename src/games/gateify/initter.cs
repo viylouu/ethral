@@ -35,5 +35,7 @@
             for (int i = 0; i < savefiles.Length; i++)
                 savefiles[i] = Path.GetFileNameWithoutExtension(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\assets\savedata\gateify\", "*.json")[i]);
         }
+
+        selects = new List<int>();
     }
 }

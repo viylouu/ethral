@@ -30,6 +30,55 @@
         }
 
         salImgui();
+
+        if (Keyboard.IsKeyPressed(Key.W) || Keyboard.IsKeyPressed(Key.A) || Keyboard.IsKeyPressed(Key.S) || Keyboard.IsKeyPressed(Key.D))
+            for (int i = 0; i < selects.Count; i++) {
+                if (Keyboard.IsKeyPressed(Key.W))
+                    gates[selects[i]].pos.Y--;
+                if (Keyboard.IsKeyPressed(Key.S))
+                    gates[selects[i]].pos.Y++;
+                if (Keyboard.IsKeyPressed(Key.A))
+                    gates[selects[i]].pos.X--;
+                if (Keyboard.IsKeyPressed(Key.D))
+                    gates[selects[i]].pos.X++;
+            }
+
+        if (selects.Count != 0) {
+            ImGui.Begin("selection");
+
+            ImGui.Text(selects.Count + " node"+(selects.Count==1?"":"s")+" selected");
+
+            if (ImGui.Button("deselect"))
+                selects = new List<int>();
+
+            if (ImGui.Button("duplicate")) {
+                int gatecount = gates.Count;
+                selects = new List<int>();
+
+                for (int i = 0; i < selects.Count; i++) {
+                    node duplicated = new node();
+                    duplicated.gate = gates[selects[i]].gate;
+                    duplicated.in1 = gates[selects[i]].in1;
+                    duplicated.in2 = gates[selects[i]].in2;
+                    duplicated.out1 = gates[selects[i]].out1;
+                    duplicated.out2 = gates[selects[i]].out2;
+
+                    if (!selects.Contains(duplicated.in1))
+                        duplicated.in1 = -1;
+                    if (!selects.Contains(duplicated.in2))
+                        duplicated.in2 = -1;
+                    if (!selects.Contains(duplicated.out1))
+                        duplicated.out1 = -1;
+                    if (!selects.Contains(duplicated.out2))
+                        duplicated.out2 = -1;
+
+                    gates.Add(duplicated);
+                    selects.Add(gatecount+i);
+                }
+            }
+
+            ImGui.End();
+        }
     }
 
     static void updnode(ref int i) {
@@ -47,8 +96,15 @@
             gates[i].out2 = -1;
 
         if (Mouse.Position.X > ssX-ssS/2 && Mouse.Position.X < ssX+ssS/2 && Mouse.Position.Y > ssY-ssS/2 && Mouse.Position.Y < ssY+ssS/2) {
-            if (Mouse.IsButtonPressed(MouseButton.Left))
-            { gates[i].dragged = true; nodegrabPS(); }
+            if (Mouse.IsButtonPressed(MouseButton.Left)) { 
+                gates[i].dragged = true; 
+                nodegrabPS(); 
+
+                if (!Keyboard.IsKeyDown(Key.LeftShift)) 
+                    selects = new List<int>();
+                if (!selects.Contains(i)) 
+                    selects.Add(i); 
+            }
              
             if (Mouse.IsButtonPressed(MouseButton.Right))
             { gates.RemoveAt(i); nodedelPS(); decreaseamt++; i--; return; }

@@ -51,4 +51,6 @@ partial class gateify {
     static string savename = "";
 
     static int decreaseamt = 0;
+
+    static List<int> selects = new List<int>();
 }
