@@ -19,7 +19,7 @@ partial class gateify {
     static float zoom = 1;
 
     static int curselgate;
-    static string[] gateenum = { "buffer", "not", "and", "nand", "or", "nor", "xor", "xnor", "splitter", "continuer", "input", "output" };
+    static string[] gateenum = { "delay", "not", "and", "nand", "or", "nor", "xor", "xnor", "splitter", "continuer", "input", "output" };
     static int placeX,placeY;
 
     static bool wiring, wire2b, wire2f;
