@@ -24,7 +24,7 @@
             ImGui.Begin("menu");
 
             if (ImGui.Button("close"))
-            { thehub.rendact = null; Window.Resize(0, 0); stopsongs(); Window.Title = "ethral: hub"; }
+            { thehub.rendact = null; stopsongs(); Window.Title = "ethral: hub"; }
 
             ImGui.End();
         }
@@ -53,7 +53,8 @@
 
             if (ImGui.Button("duplicate")) {
                 int gatecount = gates.Count;
-                selects = new List<int>();
+
+                List<int> newsels = new List<int>();
 
                 for (int i = 0; i < selects.Count; i++) {
                     node duplicated = new node();
@@ -75,8 +76,10 @@
                         duplicated.out2 = -1;
 
                     gates.Add(duplicated);
-                    selects.Add(gatecount+i);
+                    newsels.Add(gatecount+i);
                 }
+
+                selects = newsels;
             }
 
             ImGui.End();
