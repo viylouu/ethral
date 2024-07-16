@@ -57,7 +57,9 @@
 
                 for (int i = 0; i < selects.Count; i++) {
                     node duplicated = new node();
+                    duplicated.pos = gates[selects[i]].pos;
                     duplicated.gate = gates[selects[i]].gate;
+                    duplicated.on = gates[selects[i]].on;
                     duplicated.in1 = gates[selects[i]].in1;
                     duplicated.in2 = gates[selects[i]].in2;
                     duplicated.out1 = gates[selects[i]].out1;
