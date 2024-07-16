@@ -11,7 +11,5 @@
         textcol = palette.GetPixel(4,0);
 
         palette.Dispose();
-
-        bggrad = new LinearGradient(0, Window.Height, Window.Width, 0, new Color[] { bgcol_dark, bgcol_light });
     }
 }
