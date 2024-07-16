@@ -1,6 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-
-partial class gateify {
+﻿partial class gateify {
     public static void rend(ICanvas c) {
         c.Clear(new Color(24, 24, 24));
         c.Antialias(false);
@@ -46,6 +44,9 @@ partial class gateify {
 
         c.FontSize(12);
         c.DrawText(songs[songplayed].Item3, new Vector2(3, 717), Alignment.BottomLeft);
+
+        if (tickcounter <= 0)
+            tickcounter = tickspeed;
     }
 
     static void drawgate(ICanvas c, int i) { 

@@ -53,4 +53,7 @@ partial class gateify {
     static int decreaseamt = 0;
 
     static List<int> selects = new List<int>();
+
+    static float tickspeed = 1f / 20;
+    static float tickcounter;
 }

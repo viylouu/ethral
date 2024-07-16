@@ -1,5 +1,7 @@
 ﻿partial class gateify {
     public static void update() {
+        tickcounter -= Time.DeltaTime;
+
         if (Mouse.IsButtonDown(MouseButton.Middle))
             cam -= Mouse.DeltaPosition;
 
@@ -205,7 +207,8 @@
                 gates[i].pos = pos;
         }
 
-        updnodestate(i);
+        if(tickcounter <= 0)
+            updnodestate(i);
 
         if (songs[songplayed].Item2.PlaybackState == PlaybackState.Stopped) {
             int prev = songplayed;
