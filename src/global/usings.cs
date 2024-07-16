@@ -6,3 +6,7 @@ global using System.Numerics;
 global using NAudio.Wave;
 global using ImGuiNET;
 global using Newtonsoft.Json;
+global using Box2D.NetStandard.Dynamics.Bodies;
+//global using Box2D.NetStandard.Dynamics.World;
+global using Box2D.NetStandard.Dynamics.Fixtures;
+global using Box2D.NetStandard.Collision.Shapes;
