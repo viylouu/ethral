@@ -113,8 +113,35 @@
                     selects.Add(i); 
             }
              
-            if (Mouse.IsButtonPressed(MouseButton.Right))
-            { gates.RemoveAt(i); nodedelPS(); decreaseamt++; i--; return; }
+            if (Mouse.IsButtonPressed(MouseButton.Right)) {
+                if (gates[i].in1 != -1) {
+                    if(gates[i].in1.get().out1 == i)
+                        gates[i].in1.get().out1 = -1;
+                    else
+                        gates[i].in1.get().out2 = -1;
+                }
+                if (gates[i].in2 != -1) {
+                    if(gates[i].in2.get().out1 == i)
+                        gates[i].in2.get().out1 = -1;
+                    else
+                        gates[i].in2.get().out2 = -1;
+                }
+
+                if (gates[i].out1 != -1) {
+                    if(gates[i].out1.get().in1 == i)
+                        gates[i].out1.get().in1 = -1;
+                    else
+                        gates[i].out1.get().in2 = -1;
+                }
+                if (gates[i].out2 != -1) {
+                    if(gates[i].out2.get().in1 == i)
+                        gates[i].out2.get().in1 = -1;
+                    else
+                        gates[i].out2.get().in2 = -1;
+                }
+
+                gates.RemoveAt(i); nodedelPS(); decreaseamt++; i--; return; 
+            }
 
             if (Mouse.IsButtonPressed(MouseButton.Middle))
             { gates[i].on = !gates[i].on; inptogglePS(); }
