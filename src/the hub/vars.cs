@@ -10,11 +10,13 @@
     static gamebut plong_g = new gamebut { name = "plong", init = plong.init, rend = plong.rend, update = plong.update };
     static gamebut floopy_burd_g = new gamebut { name = "floopy burd", init = floopy_burd.init, rend = floopy_burd.rend, update = floopy_burd.update };
     static gamebut gateify_g = new gamebut { name = "gateify", init = gateify.init, rend = gateify.rend, update = gateify.update };
+    static gamebut clonk_g = new gamebut { name = "clonk", init = clonk.init, rend = clonk.rend, update = clonk.update };
 
     static gamebut[] games = { 
         plong_g,
         floopy_burd_g,
-        gateify_g
+        gateify_g,
+        clonk_g
     };
 
     static Color bgcol_dark, bgcol_light, butcol_dark, butcol_light, textcol;

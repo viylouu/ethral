@@ -39,6 +39,9 @@
     <None Update="assets\ambient\music\taiyaki.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="assets\clonk\de_dust.fbx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="assets\floopy burd\burd.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
