@@ -76,12 +76,12 @@
               ssS = 16/zoom;
 
         c.DrawTexture(
-            gates[i].special?specspr:gatespr, 
+            gates[i].special?specspr:gatespr,
             new Rectangle(
-                (m.clmp(gates[i].gate,0,8)*2+(!gates[i].on?1:0))%5*16, 
-                m.flr((m.clmp(gates[i].gate,0,8)*2+(!gates[i].on?1:0))/5f)*16, 
+                (m.clmp(gates[i].gate, 0, 8) * 2 + (!gates[i].on ? 1 : 0)) % 5 * 16,
+                m.flr((m.clmp(gates[i].gate, 0, 8) * 2 + (!gates[i].on ? 1 : 0)) / 5f) * 16,
                 16, 16
-            ), 
+            ),
             new Rectangle(ssX, ssY, ssS, ssS, Alignment.Center)
         );
 
