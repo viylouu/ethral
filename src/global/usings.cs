@@ -6,3 +6,4 @@ global using System.Numerics;
 global using NAudio.Wave;
 global using ImGuiNET;
 global using Newtonsoft.Json;
+global using Assimp;
