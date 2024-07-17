@@ -92,22 +92,6 @@
 
             ImGui.End();
         }
-        
-        pausedgates = new List<node>();
-
-        for (int i = 0; i < gates.Count; i++) {
-            node gate = new node();
-
-            gate.out1 = gates[i].out1;
-            gate.out2 = gates[i].out2;
-            gate.in1 = gates[i].in1;
-            gate.in2 = gates[i].in2;
-            gate.gate = gates[i].gate;
-            gate.on = gates[i].on;
-            gate.special = gates[i].special;
-
-            pausedgates.Add(gate);
-        }
     }
 
     static void updnode(ref int i) {
@@ -309,10 +293,12 @@
         else
             switch (gates[i].gate) {
                 case 0:
-                    gates[i].on = pulse;
+                    if (gates[i].in1 != null && !gates[i].in1.get().on)
+                        gates[i].on = pulse;
                     break;
                 case 1:
-                    gates[i].on = !pulse;
+                    if (gates[i].in1 != null && !gates[i].in1.get().on)
+                        gates[i].on = !pulse;
                     break;
             }
     }

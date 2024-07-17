@@ -14,6 +14,25 @@
 
         decreaseamt = 0;
 
+        if (tickcounter <= 0) {
+            pausedgates = new List<node>();
+
+            for (int i = 0; i < gates.Count; i++) {
+                node gate = new node();
+
+                gate.out1 = gates[i].out1;
+                gate.out2 = gates[i].out2;
+                gate.in1 = gates[i].in1;
+                gate.in2 = gates[i].in2;
+                gate.gate = gates[i].gate;
+                gate.on = gates[i].on;
+                gate.special = gates[i].special;
+                gate.pos = gates[i].pos;
+
+                pausedgates.Add(gate);
+            }
+        }
+
         for (int i = 0; i < gates.Count; i++)
             drawgate(c, i);
 
