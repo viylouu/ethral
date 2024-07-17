@@ -10,12 +10,18 @@
 
         ImGui.Begin("spawner");
 
-        ImGui.ListBox("gates", ref curselgate, gateenum, gateenum.Length);
+        if(!spec)
+            ImGui.ListBox("gates", ref curselgate, gateenum, gateenum.Length);
+        else
+            ImGui.ListBox("special", ref curselspec, specenum, specenum.Length);
+
+        ImGui.Checkbox("special", ref spec);
+
         ImGui.InputInt("pos x", ref placeX);
         ImGui.InputInt("pos y", ref placeY);
 
         if (ImGui.Button("add"))
-        { gates.Add(new node { gate = (byte)curselgate, on = false, pos = new Vector2(placeX, placeY) }); nodecrtPS(); }
+        { gates.Add(new node { gate = (byte)(spec?curselspec:curselgate), on = false, pos = new Vector2(placeX, placeY), special = spec }); nodecrtPS(); }
 
         ImGui.End();
 
@@ -85,6 +91,22 @@
             }
 
             ImGui.End();
+        }
+        
+        pausedgates = new List<node>();
+
+        for (int i = 0; i < gates.Count; i++) {
+            node gate = new node();
+
+            gate.out1 = gates[i].out1;
+            gate.out2 = gates[i].out2;
+            gate.in1 = gates[i].in1;
+            gate.in2 = gates[i].in2;
+            gate.gate = gates[i].gate;
+            gate.on = gates[i].on;
+            gate.special = gates[i].special;
+
+            pausedgates.Add(gate);
         }
     }
 
@@ -248,40 +270,50 @@
         }
     }
 
-    static void updnodestate(int i) { 
-        switch (gates[i].gate) {
-            case 0 or 8 or 9 or 11:
-                if (gates[i].in1.get() != null)
-                    gates[i].on = gates[i].in1.get().on;
-                break;
-            case 1:
-                if (gates[i].in1.get() != null)
-                    gates[i].on = !gates[i].in1.get().on;
-                break;
-            case 2:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on & gates[i].in2.get().on;
-                break;
-            case 3:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on !& gates[i].in2.get().on;
-                break;
-            case 4:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on | gates[i].in2.get().on;
-                break;
-            case 5:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on !| gates[i].in2.get().on;
-                break;
-            case 6:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on ^ gates[i].in2.get().on;
-                break;
-            case 7:
-                if (gates[i].in1.get() != null && gates[i].in2.get() != null)
-                    gates[i].on = gates[i].in1.get().on !^ gates[i].in2.get().on;
-                break;
-        }
+    static void updnodestate(int i) {
+        if (!gates[i].special)
+            switch (gates[i].gate) {
+                case 0 or 8 or 9 or 11:
+                    if (gates[i].in1.get() != null)
+                        gates[i].on = gates[i].in1.get().on;
+                    break;
+                case 1:
+                    if (gates[i].in1.get() != null)
+                        gates[i].on = !gates[i].in1.get().on;
+                    break;
+                case 2:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on & gates[i].in2.get().on;
+                    break;
+                case 3:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on !& gates[i].in2.get().on;
+                    break;
+                case 4:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on | gates[i].in2.get().on;
+                    break;
+                case 5:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on !| gates[i].in2.get().on;
+                    break;
+                case 6:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on ^ gates[i].in2.get().on;
+                    break;
+                case 7:
+                    if (gates[i].in1.get() != null && gates[i].in2.get() != null)
+                        gates[i].on = gates[i].in1.get().on !^ gates[i].in2.get().on;
+                    break;
+            }
+        else
+            switch (gates[i].gate) {
+                case 0:
+                    gates[i].on = pulse;
+                    break;
+                case 1:
+                    gates[i].on = !pulse;
+                    break;
+            }
     }
 }

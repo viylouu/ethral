@@ -4,23 +4,28 @@
     public bool on;
     public bool dragged;
     public int in1=-1, in2=-1, out1=-1, out2=-1;
+    public bool special;
 }
 
 public static class nodeext {
-    public static node get(this int i) { if (i == -1 || i >= gateify.gates.Count) { return null; } return gateify.gates[i]; }
+    public static node get(this int i) { if (i == -1 || i >= gateify.gates.Count) { return null; } return gateify.pausedgates[i]; }
+    public static node getcur(this int i) { if (i == -1 || i >= gateify.gates.Count) { return null; } return gateify.gates[i]; }
 }
 
 partial class gateify {
     public static List<node> gates = new List<node>();
 
-    static ITexture gatespr, dot, dotemp;
+    static ITexture gatespr, dot, dotemp, specspr;
 
     static Vector2 cam;
     static float zoom = 1;
 
     static int curselgate;
+    static int curselspec;
     static string[] gateenum = { "delay", "not", "and", "nand", "or", "nor", "xor", "xnor", "splitter", "continuer", "input", "output" };
+    static string[] specenum = { "pulser", "inverse pulser" };
     static int placeX,placeY;
+    static bool spec;
 
     static bool wiring, wire2b, wire2f;
     static int wireI, wireio;
@@ -54,6 +59,10 @@ partial class gateify {
 
     static List<int> selects = new List<int>();
 
-    static float tickspeed = 1f / 20;
+    static float tickspeed = 1f / 8;
     static float tickcounter;
+
+    static bool pulse;
+
+    public static List<node> pausedgates;
 }

@@ -5,6 +5,7 @@
         Simulation.SetFixedResolution(1280, 720, Color.Black, false, true, false);
 
         gatespr = Graphics.LoadTexture(@"assets\gateify\gates.png");
+        specspr = Graphics.LoadTexture(@"assets\gateify\specials.png");
         dot = Graphics.LoadTexture(@"assets\gateify\dot.png");
         dotemp = Graphics.LoadTexture(@"assets\gateify\dot_empty.png");
 
@@ -37,5 +38,7 @@
         }
 
         selects = new List<int>();
+
+        pulse = false;
     }
 }

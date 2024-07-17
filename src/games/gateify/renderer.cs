@@ -45,8 +45,10 @@
         c.FontSize(12);
         c.DrawText(songs[songplayed].Item3, new Vector2(3, 717), Alignment.BottomLeft);
 
-        if (tickcounter <= 0)
+        if (tickcounter <= 0) {
             tickcounter = tickspeed;
+            pulse = !pulse;
+        }
     }
 
     static void drawgate(ICanvas c, int i) { 
@@ -55,7 +57,7 @@
               ssS = 16/zoom;
 
         c.DrawTexture(
-            gatespr, 
+            gates[i].special?specspr:gatespr, 
             new Rectangle(
                 (m.clmp(gates[i].gate,0,8)*2+(!gates[i].on?1:0))%5*16, 
                 m.flr((m.clmp(gates[i].gate,0,8)*2+(!gates[i].on?1:0))/5f)*16, 
