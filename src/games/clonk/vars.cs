@@ -11,7 +11,8 @@
     static List<Vector3> r_verts3D = new List<Vector3>();
 
     static Matrix4x4 projmat,
-                     viewmat;
+                     viewmat,
+                     mapmodelmat;
 
     static Vector3 cam;
     static float pitch, yaw;
@@ -19,4 +20,6 @@
     static ParallelOptions parallelopts = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
 
     static bool focused;
+
+    static float FOV = 90;
 }
