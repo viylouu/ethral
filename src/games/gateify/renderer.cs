@@ -1,4 +1,6 @@
-﻿partial class gateify {
+﻿using System.Reflection.Metadata.Ecma335;
+
+partial class gateify {
     public static void rend(ICanvas c) {
         c.Clear(new Color(24, 24, 24));
         c.Antialias(false);
@@ -11,8 +13,6 @@
             c.DrawLine(-24-cam.X%iadd,i-cam.Y%iadd,1304-cam.X%iadd,i-cam.Y%iadd);
 
         c.Fill(Color.White);
-
-        decreaseamt = 0;
 
         if (tickcounter <= 0) {
             pausedgates = new List<node>();
@@ -85,14 +85,19 @@
             new Rectangle(ssX, ssY, ssS, ssS, Alignment.Center)
         );
 
-        if (gates[i].in1 != -1)
-            gates[i].in1 -= decreaseamt;
-        if (gates[i].in2 != -1)
-            gates[i].in2 -= decreaseamt;
-        if (gates[i].out1 != -1)
-            gates[i].out1 -= decreaseamt;
-        if (gates[i].out2 != -1)
-            gates[i].out2 -= decreaseamt;
+        /*for(int j = 0; j < delposses.Count; j++) {
+            if (gates[i].in1 != -1 && gates[i].in1 > delposses[i]-(delposses.Count-j))
+                gates[i].in1 -= 1;
+            if (gates[i].in2 != -1 && gates[i].in2 > delposses[i]-(delposses.Count-j))
+                gates[i].in2 -= 1;
+            if (gates[i].out1 != -1 && gates[i].out1 > delposses[i]-(delposses.Count-j))
+                gates[i].out1 -= 1;
+            if (gates[i].out2 != -1 && gates[i].out2 > delposses[i]-(delposses.Count-j))
+                gates[i].out2 -= 1;
+        }
+
+        if (delposses.Count > 0)
+            return;*/
 
         int sel = -1;
 

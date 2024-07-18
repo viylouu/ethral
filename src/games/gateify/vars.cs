@@ -55,7 +55,7 @@ partial class gateify {
     static int imguisfsel;
     static string savename = "";
 
-    static int decreaseamt = 0;
+    static List<int> delposses;
 
     static List<int> selects = new List<int>();
 

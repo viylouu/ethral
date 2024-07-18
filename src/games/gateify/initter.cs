@@ -40,5 +40,7 @@
         selects = new List<int>();
 
         pulse = false;
+
+        delposses = new List<int>();
     }
 }

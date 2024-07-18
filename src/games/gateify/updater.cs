@@ -146,7 +146,7 @@
                         gates[i].out2.get().in2 = -1;
                 }
 
-                gates.RemoveAt(i); nodedelPS(); decreaseamt++; i--; return; 
+                gates.RemoveAt(i); nodedelPS(); delposses.Add(i); i--; return; 
             }
 
             if (Mouse.IsButtonPressed(MouseButton.Middle))
@@ -252,6 +252,8 @@
 
             PS(songplayed);
         }
+
+        delposses.Clear();
     }
 
     static void updnodestate(int i) {
