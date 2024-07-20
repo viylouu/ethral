@@ -1,0 +1,46 @@
+
+[
+    {
+        "name": "idle",
+        "tokens": [
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "sound":"idle_down","type":true },
+            { "x":1,"y":1,"type":false },
+            { "x":1,"y":1,"type":false },
+            { "x":1,"y":1,"type":false },
+            { "x":1,"y":1,"type":false },
+            { "sound":"idle_up","type":true }
+        ],
+        "param": { 
+            "fps": 10,
+            "size": 24
+        }
+
+    },
+    {
+        "name": "idle_spec",
+        "tokens": [
+            { "x":0,"y":0,"type":false },
+            { "x":1,"y":0,"type":false },
+            { "x":2,"y":0,"type":false },
+            { "sound":"hat_throw","type":true },
+            { "x":3,"y":0,"type":false },
+            { "x":4,"y":0,"type":false },
+            { "x":5,"y":0,"type":false },
+            { "x":6,"y":0,"type":false },
+            { "x":7,"y":0,"type":false },
+            { "sound":"hat_hit","type":true },
+            { "x":8,"y":0,"type":false },
+            { "x":9,"y":0,"type":false },
+            { "x":10,"y":0,"type":false }
+        ],
+        "param": { 
+            "fps": 10,
+            "size": 24
+        }
+    }
+]

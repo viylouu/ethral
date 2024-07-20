@@ -97,7 +97,7 @@
     <None Update="assets\gateify\wirestart.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\guillermo\guillermo.anim">
+    <None Update="assets\guillermo\guillermo.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="assets\guillermo\guillermo.png">
@@ -115,10 +115,6 @@
     <None Update="assets\plong\song.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="assets\guillermo\" />
   </ItemGroup>
 
 </Project>
