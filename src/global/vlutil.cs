@@ -154,4 +154,30 @@ public class u {
         }
         texture.ApplyChanges();
     }
+
+    public static bool trirect(Vector2 t1, Vector2 t2, Vector2 t3, Vector2 rp, Vector2 rs) {
+        if (linerect(t1, t2, rp, rs) || linerect(t2, t3, rp, rs) || linerect(t3, t1, rp, rs))
+            return true;
+        return false;
+    }
+
+    public static bool linerect(Vector2 l1, Vector2 l2, Vector2 rp, Vector2 rs) {
+        bool left = lineline(l1.X, l1.Y, l2.X, l2.Y, rp.X, rp.Y, rs.X, rp.Y + rs.Y);
+        bool right = lineline(l1.X, l1.Y, l2.X, l2.Y, rp.X + rs.X, rp.Y, rp.X + rs.X, rp.Y + rs.Y);
+        bool top = lineline(l1.X, l1.Y, l2.X, l2.Y, rp.X, rp.Y, rp.X + rs.X, rp.Y);
+        bool bottom = lineline(l1.X, l1.Y, l2.X, l2.Y, rp.X, rp.Y + rs.Y, rp.X + rs.X, rp.Y + rs.Y);
+
+        if (left || right || top || bottom)
+            return true;
+        return false;
+    }
+
+    public static bool lineline(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+        float uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+        float uB = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+        if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
+            return true;
+        return false;
+    }
 }

@@ -16,11 +16,11 @@
         for (int i = 0; i < r_verts.Count; i++) {
             Vector3 vert = Vector3.Transform(r_verts[i], viewmat * projmat);
             if(vert.Z > 0) {
-                r_verts3D.Add(new Vector3(vert.X / vert.Z, vert.Y / vert.Z, vert.Z));
-                r_verts2D.Add(new Vector2(vert.X / vert.Z, vert.Y / vert.Z));
+                r_verts3D.Add(new Vector3(vert.X/vert.Z, vert.Y/vert.Z, vert.Z));
+                r_verts2D.Add(new Vector2(vert.X/vert.Z, vert.Y/vert.Z));
             } else {
-                r_verts3D.Add(new Vector3(vert.X, vert.Y, vert.Z));
-                r_verts2D.Add(new Vector2(vert.X, vert.Y));
+                r_verts3D.Add(new Vector3(vert.X/vert.Z, vert.Y/vert.Z, vert.Z));
+                r_verts2D.Add(new Vector2(vert.X/vert.Z, vert.Y/vert.Z));
             }
         }
 
@@ -53,8 +53,9 @@
         c.Scale(Window.Width/2, -Window.Height/2);
 
         for (int i = 0; i < r_oinds.Count; i += 3) {
-            //if (r_verts3D[r_oinds[i]].Z <= 0 && r_verts3D[r_oinds[i + 1]].Z <= 0 && r_verts3D[r_oinds[i + 2]].Z <= 0)
-            //    continue;
+            if (r_verts3D[r_oinds[i]].Z <= 0 && r_verts3D[r_oinds[i + 1]].Z <= 0 && r_verts3D[r_oinds[i + 2]].Z <= 0)
+                if (!u.trirect(r_verts2D[r_oinds[i]], r_verts2D[r_oinds[i+1]], r_verts2D[r_oinds[i+2]], Vector2.One*-1, Vector2.One*2))
+                    continue;
 
             int colorIndex = (int)m.clmp(Array.IndexOf(r_indsARR, r_oinds[i]) / 3, 0, r_cols.Count - 1);
             c.Fill(r_cols[colorIndex]);

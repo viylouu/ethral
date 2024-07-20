@@ -12,12 +12,14 @@
     static gamebut gateify_g = new gamebut { name = "gateify", init = gateify.init, rend = gateify.rend, update = gateify.update };
     static gamebut clonk_g = new gamebut { name = "clonk", init = clonk.init, rend = clonk.rend, update = clonk.update };
     static gamebut sp_g = new gamebut { name = "shader playground", init = shad_play.init, rend = shad_play.rend, update = shad_play.update };
+    static gamebut guillermo_g = new gamebut { name = "¡guillermo!", init = guillermo.init, rend = guillermo.rend, update = guillermo.update };
 
     static gamebut[] games = { 
         plong_g,
         floopy_burd_g,
         gateify_g,
         clonk_g,
+        guillermo_g,
         //sp_g
     };
 
