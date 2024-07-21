@@ -11,5 +11,11 @@
         textcol = palette.GetPixel(4,0);
 
         palette.Dispose();
+
+        addsound(@"assets\hub\select.wav");
+        addsound(@"assets\hub\correct.wav");
+
+        for(int i = 1; i <= 11; i++)
+            addsound(@"assets\hub\"+i+".wav");
     }
 }

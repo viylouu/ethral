@@ -9,10 +9,10 @@
             { "x":0,"y":1,"type":false },
             { "x":0,"y":1,"type":false },
             { "sound":"idle_down","type":true },
-            { "x":1,"y":1,"type":false },
-            { "x":1,"y":1,"type":false },
-            { "x":1,"y":1,"type":false },
-            { "x":1,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
             { "sound":"idle_up","type":true }
         ],
         "param": { 
@@ -22,21 +22,61 @@
 
     },
     {
-        "name": "idle_spec",
+        "name": "idle_spec2",
+        "tokens": [
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "x":0,"y":1,"type":false },
+            { "sound":"hat_hop","type":true },
+            { "x":1,"y":1,"type":false },
+            { "sound":"idle_down","type":true },
+            { "x":2,"y":1,"type":false },
+            { "sound":"hat_hitlight","type":true },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "x":3,"y":1,"type":false },
+            { "sound":"idle_up","type":true }
+        ],
+        "param": { 
+            "fps": 10,
+            "size": 24
+        }
+
+    },
+    {
+        "name": "idle_spec1",
         "tokens": [
             { "x":0,"y":0,"type":false },
             { "x":1,"y":0,"type":false },
+            { "sound":"idle_down","type":true },
             { "x":2,"y":0,"type":false },
             { "sound":"hat_throw","type":true },
+            { "sound":"idle_up","type":true },
             { "x":3,"y":0,"type":false },
             { "x":4,"y":0,"type":false },
             { "x":5,"y":0,"type":false },
             { "x":6,"y":0,"type":false },
             { "x":7,"y":0,"type":false },
             { "sound":"hat_hit","type":true },
+            { "sound":"idle_down","type":true },
             { "x":8,"y":0,"type":false },
             { "x":9,"y":0,"type":false },
             { "x":10,"y":0,"type":false }
+        ],
+        "param": { 
+            "fps": 10,
+            "size": 24
+        }
+    },
+    {
+        "name": "maracas",
+        "tokens": [
+            { "x":0,"y":2,"type":false },
+            { "x":1,"y":2,"type":false },
+            { "x":2,"y":2,"type":false }
         ],
         "param": { 
             "fps": 10,

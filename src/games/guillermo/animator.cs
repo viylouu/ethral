@@ -33,7 +33,7 @@
                 frame = 0;
 
             while (anims[ID].tokens[frame].type) {
-                //TODO: play sound here
+                playsound(anims[ID].tokens[frame].sound);
 
                 frame++;
 

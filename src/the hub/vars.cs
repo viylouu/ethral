@@ -13,14 +13,14 @@
     static gamebut clonk_g = new gamebut { name = "clonk", init = clonk.init, rend = clonk.rend, update = clonk.update };
     static gamebut sp_g = new gamebut { name = "shader playground", init = shad_play.init, rend = shad_play.rend, update = shad_play.update };
     static gamebut guillermo_g = new gamebut { name = "¡guillermo!", init = guillermo.init, rend = guillermo.rend, update = guillermo.update };
+    static gamebut mapmaker_g = new gamebut { name = "mapmaker", init = mapmaker.init, rend = mapmaker.rend, update = mapmaker.update };
 
     static gamebut[] games = { 
         plong_g,
         floopy_burd_g,
         gateify_g,
         clonk_g,
-        guillermo_g,
-        //sp_g
+        guillermo_g
     };
 
     static Color bgcol_dark, bgcol_light, butcol_dark, butcol_light, textcol;
@@ -43,4 +43,8 @@
     static List<box> bgboxes = new List<box>();
     static float boxadddel = 1f / 6;
     static float boxaddcount = 0;
+
+    static int konamicorr;
+    static bool devtools = false;
+    static int gameslength = games.Length;
 }

@@ -10,6 +10,7 @@
     public static float pi = 3.14159265358979323846264338327950288420f;
     public static float e = 2.718281828459045235360287471352662497757f;
     public static float tau = 6.2831853071795864769252867665590057683943f;
+    public static float rad = 1.5707963267948965579989817342720925807953f;
 
     //misc values
     public static float v180dpi = 57.295779513082320876798154814105170417f;
@@ -78,6 +79,9 @@
 
     public static int min(int a, int b) => (int)MathF.Min(a, b);
     public static int max(int a, int b) => (int)MathF.Max(a, b);
+
+    public static Vector2 dirv(Vector2 a, Vector2 b) => (b - a).Normalized();
+    public static float v2r(Vector2 dir) => atan2(dir.Y, dir.X);
 }
 
 public class e { //easings

@@ -61,7 +61,74 @@
             games[i].selprog = e.dist(selprog, games[i].sel?1:0, 12);
 
             if (games[i].sel && Mouse.IsButtonPressed(MouseButton.Left))
-            { rendact = games[i].rend; updact = games[i].update; games[i].init(); }
+            { rendact = games[i].rend; updact = games[i].update; games[i].init(); playsound("select"); }
         }
+
+        konami();
+    }
+
+    static void konami() { 
+        if (konamicorr == 10 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.Enter)) { 
+            konamicorr = 0; 
+            playsound("11"); 
+            devtools = !devtools; 
+            playsound("correct");
+            if (devtools) {
+                Array.Resize(ref games, gameslength+2);
+                games[gameslength] = sp_g;
+                games[gameslength + 1] = mapmaker_g;
+            } else
+                Array.Resize(ref games, gameslength);
+        }
+        else if (konamicorr == 10 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.Enter))
+        { konamicorr = 0; }
+
+        if (konamicorr == 9 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.A))
+        { konamicorr = 10; playsound("10"); }
+        else if (konamicorr == 9 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.A))
+        { konamicorr = 0; }
+
+        if (konamicorr == 8 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.B))
+        { konamicorr = 9; playsound("9"); }
+        else if (konamicorr == 8 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.B))
+        { konamicorr = 0; }
+
+        if (konamicorr == 7 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.RightArrow))
+        { konamicorr = 8; playsound("8"); }
+        else if (konamicorr == 7 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.RightArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 6 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.LeftArrow))
+        { konamicorr = 7; playsound("7"); }
+        else if (konamicorr == 6 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.LeftArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 5 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.RightArrow))
+        { konamicorr = 6; playsound("6"); }
+        else if (konamicorr == 5 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.RightArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 4 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.LeftArrow))
+        { konamicorr = 5; playsound("5"); }
+        else if (konamicorr == 4 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.LeftArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 3 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.DownArrow))
+        { konamicorr = 4; playsound("4"); }
+        else if (konamicorr == 3 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.DownArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 2 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.DownArrow))
+        { konamicorr = 3; playsound("3"); }
+        else if (konamicorr == 2 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.DownArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 1 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.UpArrow))
+        { konamicorr = 2; playsound("2"); }
+        else if (konamicorr == 1 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.UpArrow))
+        { konamicorr = 0; }
+
+        if (konamicorr == 0 && Keyboard.IsKeyPressed(Key.UpArrow))
+        { konamicorr = 1; playsound("1"); }
     }
 }
