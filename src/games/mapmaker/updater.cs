@@ -3,6 +3,6 @@
         if (!Mouse.IsButtonDown(MouseButton.Left))
             movingtileselx = false;
 
-        tileselX = m.clmp(tileselX, 64, 1280 - 64);
+        tileselX = m.clmp(tileselX, 256, 1280 - 64);
     }
 }
