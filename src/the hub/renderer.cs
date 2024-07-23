@@ -74,9 +74,10 @@
             devtools = !devtools; 
             playsound("correct");
             if (devtools) {
-                Array.Resize(ref games, gameslength+2);
+                Array.Resize(ref games, gameslength+3);
                 games[gameslength] = sp_g;
                 games[gameslength + 1] = mapmaker_g;
+                games[gameslength + 2] = waves_g;
             } else
                 Array.Resize(ref games, gameslength);
         }

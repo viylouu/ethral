@@ -14,6 +14,7 @@
     static gamebut sp_g = new gamebut { name = "shader playground", init = shad_play.init, rend = shad_play.rend, update = shad_play.update };
     static gamebut guillermo_g = new gamebut { name = "¡guillermo!", init = guillermo.init, rend = guillermo.rend, update = guillermo.update };
     static gamebut mapmaker_g = new gamebut { name = "mapmaker", init = mapmaker.init, rend = mapmaker.rend, update = mapmaker.update };
+    static gamebut waves_g = new gamebut { name = "waves", init = waves.init, rend = waves.rend, update = waves.update };
 
     static gamebut[] games = { 
         plong_g,
