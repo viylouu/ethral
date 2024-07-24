@@ -22,6 +22,9 @@
                     c.DrawTexture(guillermotiles, new Rectangle(i*8, j*8, 8, 8), new Rectangle((x*24)-cam.X+6, (y*24)-cam.Y+6, 24, 24));
                 }
 
+        c.Fill(new Color(255, 255, 255, 150));
+        c.DrawRect(m.flr((Mouse.Position.X+cam.X%24)/24)*24-cam.X%24+6, m.flr((Mouse.Position.Y+cam.Y%24)/24)*24-cam.Y%24+6, 24, 24);
+
         for(int x = 0; x < 32; x++)
             for(int y = 0; y < 32; y++)
                 c.DrawTexture(guillermotiles, new Rectangle(x*8,y*8,8,8), new Rectangle(tileselX+x*35, y*35, 28, 28));
@@ -40,7 +43,7 @@
         if (Mouse.Position.X > tileselX - 3 && Mouse.Position.X < tileselX + 3) {
             c.DrawLine(tileselX, 0, tileselX, 720);
 
-            if (Mouse.IsButtonDown(MouseButton.Left))
+            if (Mouse.IsButtonDown(MouseButton.Left) && !drawing)
                 movingtileselx = true;
         }
 

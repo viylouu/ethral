@@ -1,7 +1,7 @@
 ﻿partial class mapmaker {
     public static void update() {
         if (!Mouse.IsButtonDown(MouseButton.Left))
-            movingtileselx = false;
+        { movingtileselx = false; drawing = false; }
 
         tileselX = m.clmp(tileselX, 256, 1280 - 64);
 
@@ -28,6 +28,17 @@
             map = ResizeArray(map, mapsizex, mapsizey);
 
         ImGui.End();
+
+        int mapmx = (int)m.flr((Mouse.Position.X+cam.X)/24), 
+            mapmy = (int)m.flr((Mouse.Position.Y+cam.Y)/24);
+
+        if (
+            Mouse.IsButtonDown(MouseButton.Left) &&
+            mapmx >= 0 && mapmx < map.GetLength(0) && mapmy >= 0 && mapmy < map.GetLength(1) &&
+            (!drawing? !(Mouse.Position.X > tileselX - 3 && Mouse.Position.X < tileselX + 3) : true) &&
+            !movingtileselx
+        )
+        { map[mapmx, mapmy] = packxy(1, 5); drawing = true; }
     }
 
     static T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
