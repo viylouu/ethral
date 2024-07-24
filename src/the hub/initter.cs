@@ -17,5 +17,8 @@
 
         for(int i = 1; i <= 11; i++)
             addsound(@"assets\hub\"+i+".wav");
+
+        if (devtools)
+            unlockdevmode();
     }
 }

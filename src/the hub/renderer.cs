@@ -67,18 +67,22 @@
         konami();
     }
 
+    static void unlockdevmode() {
+        Array.Resize(ref games, gameslength + 3);
+        games[gameslength] = sp_g;
+        games[gameslength + 1] = mapmaker_g;
+        games[gameslength + 2] = waves_g;
+    }
+
     static void konami() { 
         if (konamicorr == 10 && Keyboard.PressedKeys.Count() == 1 && Keyboard.PressedKeys.Contains(Key.Enter)) { 
             konamicorr = 0; 
             playsound("11"); 
             devtools = !devtools; 
             playsound("correct");
-            if (devtools) {
-                Array.Resize(ref games, gameslength+3);
-                games[gameslength] = sp_g;
-                games[gameslength + 1] = mapmaker_g;
-                games[gameslength + 2] = waves_g;
-            } else
+            if (devtools)
+                unlockdevmode();
+            else
                 Array.Resize(ref games, gameslength);
         }
         else if (konamicorr == 10 && Keyboard.PressedKeys.Count() == 1 && !Keyboard.PressedKeys.Contains(Key.Enter))

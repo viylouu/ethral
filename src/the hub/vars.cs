@@ -46,6 +46,6 @@
     static float boxaddcount = 0;
 
     static int konamicorr;
-    static bool devtools = false;
+    static bool devtools = true;
     static int gameslength = games.Length;
 }
