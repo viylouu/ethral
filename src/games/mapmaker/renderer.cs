@@ -15,6 +15,13 @@
 
         c.DrawRect(-cam.X+6, -cam.Y+6, map.GetLength(0)*24, map.GetLength(1)*24);
 
+        for (int x = 0; x < map.GetLength(0); x++)
+            for (int y = 0; y < map.GetLength(1); y++)
+                if (map[x,y] != 0) {
+                    (byte i, byte j) = unpack(map[x,y]);
+                    c.DrawTexture(guillermotiles, new Rectangle(i*8, j*8, 8, 8), new Rectangle((x*24)-cam.X+6, (y*24)-cam.Y+6, 24, 24));
+                }
+
         for(int x = 0; x < 32; x++)
             for(int y = 0; y < 32; y++)
                 c.DrawTexture(guillermotiles, new Rectangle(x*8,y*8,8,8), new Rectangle(tileselX+x*35, y*35, 28, 28));
@@ -42,4 +49,7 @@
             tileselX = Mouse.Position.X;
         }
     }
+
+    static ushort packxy(byte x, byte y) => (ushort)((x<<8)|y);
+    static (byte, byte) unpack(ushort a) => ((byte)((a >> 8) & 0xFF), (byte)(a & 0xFF));
 }

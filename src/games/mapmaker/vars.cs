@@ -9,4 +9,6 @@
 
     static ushort[,] map = new ushort[1,1];
     static int mapsizex=1, mapsizey=1;
+
+    static byte guillermotilesXscale, guillermotilesYscale;
 }
