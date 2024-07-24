@@ -13,6 +13,8 @@
         for (int y = 6; y < 720-12; y+=24)
             c.DrawLine(6, y-cam.Y%24, tileselX-12, y-cam.Y%24);
 
+        c.DrawRect(-cam.X+6, -cam.Y+6, map.GetLength(0)*24, map.GetLength(1)*24);
+
         for(int x = 0; x < 32; x++)
             for(int y = 0; y < 32; y++)
                 c.DrawTexture(guillermotiles, new Rectangle(x*8,y*8,8,8), new Rectangle(tileselX+x*35, y*35, 28, 28));

@@ -6,4 +6,7 @@
 
     static Vector2 cam;
     static bool dragging;
+
+    static ushort[,] map = new ushort[1,1];
+    static int mapsizex=1, mapsizey=1;
 }
