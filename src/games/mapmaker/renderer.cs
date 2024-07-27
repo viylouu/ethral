@@ -1,16 +1,16 @@
 ﻿partial class mapmaker {
     public static void rend(ICanvas c) {
-        c.Clear(new Color(38, 38, 41));
+        c.Clear(new Color(22, 22, 25)); //22, 22, 25
 
-        c.Fill(new Color(22, 22, 25));
-        c.DrawRect(6, 6, tileselX-12, 720-12);
+        //c.Fill(new Color(22, 22, 25));
+        //c.DrawRect(6, 6, tileselX-12, 720-12);
 
         c.Fill(new Color(38, 38, 41));
 
         for (int x = 6; x < tileselX-12; x+=24)
             c.DrawLine(x-cam.X%24, 6, x-cam.X%24, 720-6);
 
-        for (int y = 6; y < 720-12; y+=24)
+        for (int y = 6; y < 720-12+1; y+=24)
             c.DrawLine(6, y-cam.Y%24, tileselX-12, y-cam.Y%24);
 
         c.DrawRect(-cam.X+6, -cam.Y+6, map.GetLength(0)*24, map.GetLength(1)*24);
@@ -24,6 +24,9 @@
 
         c.Fill(new Color(255, 255, 255, 150));
         c.DrawRect(m.flr((Mouse.Position.X+cam.X%24)/24)*24-cam.X%24+6, m.flr((Mouse.Position.Y+cam.Y%24)/24)*24-cam.Y%24+6, 24, 24);
+
+        c.Fill(new Color(38, 38, 41));
+        c.DrawRect(0,0,6,720); c.DrawRect(6,0,1280,6); c.DrawRect(tileselX-6,0,1280,720); c.DrawRect(0,720-6,1280,6);
 
         for(int x = 0; x < 32; x++)
             for(int y = 0; y < 32; y++)
@@ -51,6 +54,9 @@
             c.DrawLine(tileselX, 0, tileselX, 720);
             tileselX = Mouse.Position.X;
         }
+
+        c.Fill(Color.White);
+        c.DrawText(m.rnd(1/Time.DeltaTime) + " fps", 0, 0);
     }
 
     static ushort packxy(byte x, byte y) => (ushort)((x<<8)|y);

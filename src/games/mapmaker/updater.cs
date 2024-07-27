@@ -33,12 +33,16 @@
             mapmy = (int)m.flr((Mouse.Position.Y+cam.Y)/24);
 
         if (
-            Mouse.IsButtonDown(MouseButton.Left) &&
+            (Mouse.IsButtonDown(MouseButton.Left) || Mouse.IsButtonDown(MouseButton.Right)) &&
             mapmx >= 0 && mapmx < map.GetLength(0) && mapmy >= 0 && mapmy < map.GetLength(1) &&
             (!drawing? !(Mouse.Position.X > tileselX - 3 && Mouse.Position.X < tileselX + 3) : true) &&
             !movingtileselx
-        )
-        { map[mapmx, mapmy] = packxy(1, 5); drawing = true; }
+        ) { 
+            if(Mouse.IsButtonDown(MouseButton.Left))
+                map[mapmx, mapmy] = packxy(1, 5); drawing = true;
+            if (Mouse.IsButtonDown(MouseButton.Right))
+                map[mapmx, mapmy] = 0; drawing = true;
+        }
     }
 
     static T[,] ResizeArray<T>(T[,] original, int rows, int cols) {
