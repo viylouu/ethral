@@ -50,4 +50,6 @@
     static int konamicorr;
     static bool devtools = true;
     static int gameslength = games.Length;
+
+    static IFont font;
 }

@@ -20,5 +20,7 @@
 
         if (devtools)
             unlockdevmode();
+
+        font = Graphics.LoadFont(@"assets\hub\olive.ttf");
     }
 }
