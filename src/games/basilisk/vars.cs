@@ -56,6 +56,11 @@
         c2 = new col(51, 52, 56)
     };
 
+    static cell andesite = new cell {
+        c1 = new col(47, 47, 51),
+        c2 = new col(70, 70, 74)
+    };
+
     static cell sand = new cell {
         move = true,
         sidemove = true,
@@ -65,14 +70,14 @@
     };
 
     static cell dirt = new cell { 
-        move = true,
+        //move = true,
         c1 = new col(70, 50, 40),
         c2 = new col(110, 80, 60)
     };
 
     static cell grass = new cell { 
-        move = true,
-        sidemove = true,
+        //move = true,
+        //sidemove = true,
         c1 = new col(40, 60, 40),
         c2 = new col(60, 80, 50)
     };
@@ -87,7 +92,7 @@
         }
     }
 
-    static cell[] cells = { null, stone, sand, dirt, grass };
+    static cell[] cells = { null, stone, andesite, sand, dirt, grass };
 
     public static int chunkSize = 64;
     static int chunkSizeSqr = chunkSize * chunkSize;
@@ -96,7 +101,7 @@
 
     static Vector2 mapoffset;
 
-    static FNL fnl1, fnl2;
+    static FNL fnl1, fnl2, fnl3;
 
     static Vector2 cam;
 
@@ -114,4 +119,7 @@
     static bool updbthigh;
 
     static bool menuOpen;
+
+    static Gradient sky;
+    static Gradient undgrad;
 }

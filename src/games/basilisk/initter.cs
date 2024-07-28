@@ -9,12 +9,22 @@
 
         fnl1 = new FNL();
         fnl1.SetSeed(seed);
-        fnl1.SetNoiseType(FNL.NoiseType.Perlin);
-        fnl1.SetFrequency(0.0075f);
+        fnl1.SetNoiseType(FNL.NoiseType.OpenSimplex2);
+        fnl1.SetFrequency(0.0025f);
+        fnl1.SetFractalType(FNL.FractalType.FBm);
+        fnl1.SetFractalOctaves(4);
+
         fnl2 = new FNL();
         fnl2.SetSeed(texseed);
-        fnl2.SetNoiseType(FNL.NoiseType.Perlin);
+        fnl2.SetNoiseType(FNL.NoiseType.OpenSimplex2);
         fnl2.SetFrequency(0.0045f);
+
+        fnl3 = new FNL();
+        fnl3.SetSeed(seed);
+        fnl3.SetNoiseType(FNL.NoiseType.OpenSimplex2);
+        fnl3.SetFrequency(0.0075f);
+        fnl3.SetFractalType(FNL.FractalType.FBm);
+        fnl3.SetFractalOctaves(3);
 
         chunks.Add(new List<chunk> { new chunk { tex = Graphics.CreateTexture(chunkSize, chunkSize), created = false, data = new cdat[chunkSizeSqr] } });
 

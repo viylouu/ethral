@@ -3,7 +3,15 @@
         c.Clear(Color.Black);
 
         c.Antialias(false);
-        
+
+        sky = new LinearGradient(0, 0-cam.Y, 0, chunkSize*15-cam.Y, new Color[] { Color.LightSkyBlue, Color.DeepSkyBlue });
+        undgrad = new LinearGradient(0, chunkSize*20-cam.Y, 0, chunkSize*45-cam.Y, new Color[] { Color.Transparent, Color.Black });
+
+        c.Fill(sky);
+        c.DrawRect(0, 0, Window.Width, Window.Height);
+        c.Fill(undgrad);
+        c.DrawRect(0, 0, Window.Width, Window.Height);
+
         for (int y = (int)m.flr(cam.Y/2/chunkSize+mapoffset.Y-1); y < (int)m.flr((cam.Y+Window.Height)/2/chunkSize+mapoffset.Y+1); y++)
             for (int x = (int)m.flr(cam.X/2/chunkSize+mapoffset.X-1); x < (int)m.flr((cam.X+Window.Width)/2/chunkSize+mapoffset.X+1); x++)
                 if(x >= 0 && y >= 0 && x < chunks[(int)m.flr(y/chunkSize)].Count && y < chunks.Count)

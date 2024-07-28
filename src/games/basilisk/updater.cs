@@ -382,22 +382,60 @@
                                         changed = true;
                                         chunk.updating = true;
                                     } else if ((chunkSize * y + y2 - mapoffset.Y * chunkSize) < fnl1.GetNoise(((x2 / (float)chunkSize) + x - mapoffset.X) * chunkSize, 0) * chunkSize + chunkSize * 2.35f) {
-                                        chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, dirt);
-                                        if (!dirt.randcol)
-                                            chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
-                                        else
-                                            chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
-                                        chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
-                                        changed = true;
-                                        chunk.updating = true;
+                                        float myY = chunkSize * y + y2 - mapoffset.Y * chunkSize;
+                                        float grassY = fnl1.GetNoise(((x2 / (float)chunkSize) + x - mapoffset.X) * chunkSize, 0) * chunkSize + chunkSize * 2;
+
+                                        if(m.rand(0, m.dist(myY, grassY)) <= 1 && m.dist(myY, grassY) < chunkSize/4) {
+                                            chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, grass);
+                                            if (!grass.randcol)
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(grass.c1), tocol(grass.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
+                                            else
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(grass.c1), tocol(grass.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
+                                            chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
+                                            changed = true;
+                                            chunk.updating = true;
+                                        } else {
+                                            chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, dirt);
+                                            if (!dirt.randcol)
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
+                                            else
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
+                                            chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
+                                            changed = true;
+                                            chunk.updating = true;
+                                        }
                                     } else {
-                                        chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, stone);
-                                        if (!stone.randcol)
-                                            chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(stone.c1), tocol(stone.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
-                                        else
-                                            chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(stone.c1), tocol(stone.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
-                                        chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
-                                        changed = true;
+                                        float myY = chunkSize * y + y2 - mapoffset.Y * chunkSize;
+                                        float dirtY = fnl1.GetNoise(((x2 / (float)chunkSize) + x - mapoffset.X) * chunkSize, 0) * chunkSize + chunkSize * 2.35f;
+
+                                        if (m.rand(0, m.dist(myY, dirtY)) <= 1 && m.dist(myY, dirtY) <= chunkSize) {
+                                            chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, dirt);
+                                            if (!dirt.randcol)
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
+                                            else
+                                                chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(dirt.c1), tocol(dirt.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
+                                            chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
+                                            changed = true;
+                                            chunk.updating = true;
+                                        } else {
+                                            if(fnl3.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) > 0 ) {
+                                                chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, stone);
+                                                if (!stone.randcol)
+                                                    chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(stone.c1), tocol(stone.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
+                                                else
+                                                    chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(stone.c1), tocol(stone.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
+                                                chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
+                                                changed = true;
+                                            } else {
+                                                chunk.data[to1D(x2, y2)].cbehavior = (byte)Array.IndexOf(cells, andesite);
+                                                if (!stone.randcol)
+                                                    chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(andesite.c1), tocol(andesite.c2), m.rnd((fnl2.GetNoise((x2 / (float)chunkSize + x - mapoffset.X) * chunkSize, (y2 / (float)chunkSize + y - mapoffset.Y) * chunkSize) + m.rand(.35f, .65f)) * 4) / 4));
+                                                else
+                                                    chunk.data[to1D(x2, y2)].mycolon = tocol(Color.Lerp(tocol(andesite.c1), tocol(andesite.c2), m.rnd(m.rand(0, 1f) * 4) / 4));
+                                                chunk.tex.SetPixel(x2, y2, tocol(chunk.data[to1D(x2, y2)].mycolon));
+                                                changed = true;
+                                            }
+                                        }
                                     }
                                 }
 
