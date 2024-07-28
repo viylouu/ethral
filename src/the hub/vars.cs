@@ -15,13 +15,15 @@
     static gamebut guillermo_g = new gamebut { name = "¡guillermo!", init = guillermo.init, rend = guillermo.rend, update = guillermo.update };
     static gamebut mapmaker_g = new gamebut { name = "mapmaker", init = mapmaker.init, rend = mapmaker.rend, update = mapmaker.update };
     static gamebut waves_g = new gamebut { name = "waves", init = waves.init, rend = waves.rend, update = waves.update };
+    static gamebut basilisk_g = new gamebut { name = "basilisk", init = basilisk.init, rend = basilisk.rend, update = basilisk.update };
 
     static gamebut[] games = { 
         plong_g,
         floopy_burd_g,
         gateify_g,
         clonk_g,
-        guillermo_g
+        guillermo_g,
+        basilisk_g
     };
 
     static Color bgcol_dark, bgcol_light, butcol_dark, butcol_light, textcol;

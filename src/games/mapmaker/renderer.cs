@@ -21,9 +21,11 @@
                     (byte i, byte j) = unpack(map[x,y]);
                     c.DrawTexture(guillermotiles, new Rectangle(i*8, j*8, 8, 8), new Rectangle((x*24)-cam.X+6, (y*24)-cam.Y+6, 24, 24));
                 }
-
-        c.Fill(new Color(255, 255, 255, 150));
-        c.DrawRect(m.flr((Mouse.Position.X+cam.X%24)/24)*24-cam.X%24+6, m.flr((Mouse.Position.Y+cam.Y%24)/24)*24-cam.Y%24+6, 24, 24);
+        
+        if(Mouse.Position.X >= 6 && Mouse.Position.Y >= 6 && Mouse.Position.X <= tileselX-12 && Mouse.Position.Y <= 720-12) {
+            c.Fill(new Color(255, 255, 255, 150));
+            c.DrawRect(m.flr((Mouse.Position.X+cam.X%24)/24)*24-cam.X%24+6, m.flr((Mouse.Position.Y+cam.Y%24)/24)*24-cam.Y%24+6, 24, 24);
+        }
 
         c.Fill(new Color(38, 38, 41));
         c.DrawRect(0,0,6,720); c.DrawRect(6,0,1280,6); c.DrawRect(tileselX-6,0,1280,720); c.DrawRect(0,720-6,1280,6);
