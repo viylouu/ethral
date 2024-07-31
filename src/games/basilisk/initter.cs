@@ -38,5 +38,7 @@
                 dat = sr.ReadToEnd();
 
         bthigh = Convert.ToInt32(dat);
+
+        tiles = Graphics.LoadTexture(@"assets\basilisk\tiles.png");
     }
 }

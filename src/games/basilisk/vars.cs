@@ -32,6 +32,8 @@
                     sidemove;
         public col c1, c2;
         public bool randcol;
+        public int tileidx;
+        public bool hastile;
     }
 
     class player {
@@ -53,12 +55,16 @@
 
     static cell stone = new cell {
         c1 = new col(34, 35, 38),
-        c2 = new col(51, 52, 56)
+        c2 = new col(51, 52, 56),
+        hastile = true,
+        tileidx = 0
     };
 
     static cell andesite = new cell {
         c1 = new col(47, 47, 51),
-        c2 = new col(70, 70, 74)
+        c2 = new col(70, 70, 74),
+        hastile = true,
+        tileidx = 1
     };
 
     static cell sand = new cell {
@@ -122,4 +128,6 @@
 
     static Gradient sky;
     static Gradient undgrad;
+
+    static ITexture tiles;
 }
